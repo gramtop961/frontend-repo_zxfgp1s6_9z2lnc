@@ -1,28 +1,44 @@
-import { useState } from 'react'
+import Hero from './components/Hero'
+import Features from './components/Features'
+import About from './components/About'
+import Partners from './components/Partners'
+import CTA from './components/CTA'
+import Footer from './components/Footer'
 
-function App() {
-  const [count, setCount] = useState(0)
+const palette = {
+  primary: '#2168de',
+  secondary: '#4a5ca2',
+  background: '#ffffff',
+  accent: '#ff8e3c'
+}
 
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen" style={{ fontFamily: 'Geist, Inter, sans-serif', background: palette.background }}>
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-gray-100">
+        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="font-bold text-xl" style={{ color: palette.secondary }}>FashionONE</div>
+          <nav className="hidden md:flex gap-6 text-sm">
+            <a href="#home" className="hover:opacity-80">Home</a>
+            <a href="#about" className="hover:opacity-80">About Us</a>
+            <a href="#features" className="hover:opacity-80">FashionONE</a>
+            <a href="#partners" className="hover:opacity-80">Our Partners</a>
+            <a href="#contact" className="hover:opacity-80">Contact</a>
+          </nav>
         </div>
-      </div>
+      </header>
+
+      {/* Sections */}
+      <main>
+        <div id="home"><Hero palette={palette} /></div>
+        <div id="features"><Features palette={palette} /></div>
+        <div id="about"><About palette={palette} /></div>
+        <div id="partners"><Partners palette={palette} /></div>
+        <div id="contact"><CTA palette={palette} /></div>
+      </main>
+
+      <Footer palette={palette} />
     </div>
   )
 }
-
-export default App
